@@ -174,8 +174,8 @@ const styles = `
 
   .hero-nav .logo { color: var(--white); font-size: 1rem; font-weight: 800; letter-spacing: -0.02em; }
   .hero-nav nav { display: flex; gap: 2.5rem; }
-  .hero-nav nav a { color: var(--dim); text-decoration: none; transition: color 0.2s; }
-  .hero-nav nav a:hover { color: var(--white); }
+  .hero-nav nav a { color: var(--white); text-decoration: none; transition: color 0.2s; }
+  .hero-nav nav a:hover { color: var(--orange); }
 
   .hero-blob {
     position: absolute;
@@ -839,10 +839,11 @@ const styles = `
 
   /* ---- APPROACH ---- */
   .approach-section {
-    background: linear-gradient(135deg, #050510 0%, #0a0a30 40%, #0a1580 70%, #050510 100%);
+    background: var(--bg);
     padding: 6rem 5vw;
     position: relative;
     overflow: hidden;
+    border-top: 1px solid var(--card-border);
   }
 
   .approach-blob {
@@ -851,67 +852,200 @@ const styles = `
     right: -10%;
     width: 60%;
     height: 80%;
-    background: radial-gradient(ellipse, #1a3aff 0%, #0a1aaa 40%, transparent 70%);
-    filter: blur(60px);
-    opacity: 0.5;
+    background: radial-gradient(ellipse, #2a3aff 0%, #0a1aaa 40%, transparent 70%);
+    filter: blur(70px);
+    opacity: 0.35;
     z-index: 0;
+  }
+
+  .approach-blob-left {
+    position: absolute;
+    top: -10%;
+    left: -5%;
+    width: 40%;
+    height: 60%;
+    background: radial-gradient(ellipse, #1a1aee 0%, #0a0a60 50%, transparent 80%);
+    filter: blur(80px);
+    opacity: 0.25;
+    z-index: 0;
+  }
+
+  /* Eyebrow label */
+  .approach-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    color: var(--dim);
+    font-weight: 600;
+    font-family: 'DM Sans', sans-serif;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+    display: block;
   }
 
   .approach-top {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
-    margin-bottom: 4rem;
+    margin-bottom: 3rem;
     position: relative;
     z-index: 1;
   }
 
+  /* Header text — now small, like body copy */
   .approach-title-l, .approach-title-r {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.88rem;
     font-weight: 400;
-    line-height: 1.1;
-    letter-spacing: -0.02em;
+    line-height: 1.7;
+    color: var(--dim);
+    letter-spacing: 0;
   }
 
-  .approach-title-r em {
+  .approach-title-r em, .approach-title-l em {
     font-style: italic;
+    color: rgba(245,244,240,0.6);
+    text-decoration: none;
+  }
+
+  /* Inline-card headline — now the BIG text */
+  .approach-headline {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.6rem, 5vw, 4.5rem);
+    font-weight: 400;
+    line-height: 1.5;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    position: relative;
+    z-index: 1;
+    margin-bottom: 4rem;
+  }
+
+  .approach-headline em {
+    font-style: italic;
+    color: var(--orange);
     text-decoration: underline;
     text-decoration-color: var(--orange);
     text-underline-offset: 6px;
   }
 
-  .approach-body {
-    max-width: 600px;
-    margin: 0 auto 4rem;
-    text-align: center;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 0.9rem;
-    line-height: 1.8;
-    color: rgba(245,244,240,0.7);
+  /* Inline stage card — two per line, smaller to fit */
+  .stage-card {
+    display: inline-flex;
+    flex-direction: column;
+    vertical-align: middle;
+    position: relative;
+    top: -4px;
+    margin: 0 0.5rem;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.55);
+    border: 1px solid rgba(255,255,255,0.1);
+    cursor: default;
+    transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s;
+    animation: floatCard 4s ease-in-out infinite;
+  }
+
+  .stage-card:nth-of-type(1) { animation-delay: 0s; }
+  .stage-card:nth-of-type(2) { animation-delay: 0.8s; }
+  .stage-card:nth-of-type(3) { animation-delay: 1.6s; }
+  .stage-card:nth-of-type(4) { animation-delay: 2.4s; }
+
+  @keyframes floatCard {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50%       { transform: translateY(-5px) rotate(0deg); }
+  }
+
+  .stage-card:hover {
+    animation: tiltCard 0.35s cubic-bezier(0.34,1.56,0.64,1) forwards !important;
+    box-shadow: 0 16px 36px rgba(0,0,0,0.7) !important;
+  }
+
+  @keyframes tiltCard {
+    0%   { transform: translateY(0px) rotate(0deg); }
+    100% { transform: translateY(-8px) rotate(5deg); }
+  }
+
+  .stage-card-header {
+    padding: 0.45rem 0.7rem 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .stage-card-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .stage-card-title {
+    font-family: 'Syne', sans-serif;
+    font-size: 0.52rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: rgba(245,244,240,0.9);
+  }
+
+  .stage-card-body {
+    padding: 0.45rem 0.7rem 0.6rem;
+  }
+
+  /* New split bottom layout */
+  .approach-bottom {
+    display: block;
     position: relative;
     z-index: 1;
+    max-width: 640px;
+  }
+
+  .approach-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(1rem, 1.8vw, 1.2rem);
+    line-height: 1.75;
+    color: rgba(245,244,240,0.6);
+    text-align: left;
+    margin: 0;
   }
 
   .approach-body strong { color: var(--white); font-weight: 500; }
 
+  .approach-dot-divider {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #3b5bff;
+    box-shadow: 0 0 14px #3b5bff;
+    margin-bottom: 1.5rem;
+  }
+
   .approach-circle-wrap {
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     position: relative;
     z-index: 1;
   }
 
   .approach-circle {
-    width: 280px;
-    height: 280px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.12);
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     animation: spinSlow 20s linear infinite;
+  }
+
+  .approach-circle::before {
+    content: '';
+    position: absolute;
+    inset: -24px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.05);
   }
 
   @keyframes spinSlow {
@@ -920,10 +1054,10 @@ const styles = `
   }
 
   .circle-inner {
-    width: 220px;
-    height: 220px;
+    width: 230px;
+    height: 230px;
     border-radius: 50%;
-    background: linear-gradient(135deg, rgba(26,58,255,0.6) 0%, rgba(10,10,50,0.9) 60%, rgba(5,5,20,0.95) 100%);
+    background: linear-gradient(135deg, rgba(26,58,255,0.55) 0%, rgba(10,10,50,0.92) 60%, rgba(5,5,20,0.97) 100%);
     border: 1px solid rgba(255,255,255,0.1);
     display: flex;
     flex-direction: column;
@@ -938,10 +1072,10 @@ const styles = `
     font-family: 'DM Serif Display', serif;
     font-size: 1.4rem;
     font-weight: 400;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
   }
 
-  .circle-icon { font-size: 1.8rem; margin-bottom: 0.6rem; }
+  .circle-icon { font-size: 1.6rem; margin-bottom: 0.5rem; }
 
   .circle-text {
     font-family: 'DM Sans', sans-serif;
@@ -997,6 +1131,8 @@ const styles = `
     .unlock-left { border-right: none; padding-right: 0; }
     .projects-grid { grid-template-columns: 1fr 1fr; }
     .approach-top { grid-template-columns: 1fr; }
+    .approach-bottom { grid-template-columns: 1fr; }
+    .approach-circle-wrap { justify-content: flex-start; margin-top: 2rem; }
   }
 
   @media (max-width: 600px) {
@@ -1317,10 +1453,13 @@ export default function AgencySite() {
         <div className="hero-blob-3" />
 
         <nav className="hero-nav fade-up">
-          <span className="logo">Digicraft</span>
+          <span className="logo">
+            <img src="/logo.png" alt="Digicraft" style={{ height: "28px", width: "auto", verticalAlign: "middle", marginRight: "8px" }} />
+            Digicraft
+          </span>
           <div style={{ display: "flex", gap: "2.5rem" }}>
             {["Services", "Projects", "About", "Contact"].map(l => (
-              <a key={l} href="#">{l}</a>
+              <a key={l} href="#" style={{ color: "var(--white)" }}>{l}</a>
             ))}
           </div>
           <button style={{ background: "var(--white)", color: "#050510", border: "none", padding: "0.6rem 1.4rem", borderRadius: "100px", fontFamily: "Syne", fontWeight: 700, fontSize: "0.72rem", letterSpacing: "0.08em", cursor: "pointer" }}>
@@ -1383,37 +1522,99 @@ export default function AgencySite() {
       {/* ── APPROACH ── */}
       <section className="approach-section">
         <div className="approach-blob" />
+        <div className="approach-blob-left" />
+
+        {/* One-line header */}
         <div className="approach-top">
-          <div className="approach-title-l">We think<br />out of the box</div>
-          <div className="approach-title-r">when it comes to<br />our <em>approach</em></div>
+          <div className="approach-title-l" style={{ gridColumn: "1 / -1", display: "flex", alignItems: "center", gap: "1rem" }}>
+            <div className="approach-dot-divider" style={{ margin: 0, flexShrink: 0 }} />
+            We think out of the box when it comes to our <em>approach</em>
+          </div>
         </div>
 
-        <div
-          style={{
-            width: 10,
-            height: 10,
-            borderRadius: "50%",
-            background: "#3b5bff",
-            boxShadow: "0 0 16px #3b5bff",
-            margin: "0 auto 1rem",
-            position: "relative",
-            zIndex: 1,
-          }}
-        />
+        {/* Inline-card headline — two cards per line */}
+        <h2 className="approach-headline">
+          We{" "}
+          <span className="stage-card" style={{ width: 118, background: "#0b1030" }}>
+            <div className="stage-card-header">
+              <div className="stage-card-dot" style={{ background: "#1a3aff" }} />
+              <span className="stage-card-title">DISCOVER</span>
+            </div>
+            <div className="stage-card-body">
+              <div style={{ display: "flex", alignItems: "flex-end", gap: 2, height: 24 }}>
+                {[{ h: "45%", c: "rgba(26,58,255,0.4)" },{ h: "70%", c: "rgba(26,58,255,0.7)" },{ h: "55%", c: "rgba(26,58,255,0.4)" },{ h: "90%", c: "#1a3aff" },{ h: "60%", c: "rgba(26,58,255,0.6)" },{ h: "75%", c: "rgba(26,58,255,0.7)" }].map((b, i) => (
+                  <div key={i} style={{ flex: 1, height: b.h, background: b.c, borderRadius: "2px 2px 0 0" }} />
+                ))}
+              </div>
+              <div style={{ marginTop: 4, display: "flex", justifyContent: "space-between" }}>
+                <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "0.42rem", color: "rgba(245,244,240,0.4)" }}>Audience reach</span>
+                <span style={{ fontFamily: "'Syne',sans-serif", fontSize: "0.46rem", fontWeight: 700, color: "#1a3aff" }}>+68%</span>
+              </div>
+            </div>
+          </span>
+          {" "}your market &{" "}
+          <span className="stage-card" style={{ width: 118, background: "#0f0b20" }}>
+            <div className="stage-card-header">
+              <div className="stage-card-dot" style={{ background: "#ff4d1a" }} />
+              <span className="stage-card-title">STRATEGISE</span>
+            </div>
+            <div className="stage-card-body">
+              <svg viewBox="0 0 100 34" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%" }}>
+                <rect x="5" y="3" width="90" height="7" rx="2" fill="rgba(255,77,26,0.2)" />
+                <rect x="18" y="13" width="64" height="7" rx="2" fill="rgba(255,77,26,0.4)" />
+                <rect x="32" y="23" width="36" height="7" rx="2" fill="#ff4d1a" />
+              </svg>
+              <div style={{ display: "flex", justifyContent: "space-between", marginTop: 3 }}>
+                <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "0.42rem", color: "rgba(245,244,240,0.4)" }}>Funnel drop</span>
+                <span style={{ fontFamily: "'Syne',sans-serif", fontSize: "0.46rem", fontWeight: 700, color: "#ff4d1a" }}>−34%</span>
+              </div>
+            </div>
+          </span>
+          {" "}your position.<br />
+          Then we{" "}
+          <span className="stage-card" style={{ width: 118, background: "#050f1a" }}>
+            <div className="stage-card-header">
+              <div className="stage-card-dot" style={{ background: "#3b5bff" }} />
+              <span className="stage-card-title">DESIGN</span>
+            </div>
+            <div className="stage-card-body">
+              <div style={{ display: "flex", gap: 2, marginBottom: 4 }}>
+                {["#1a3aff","#ff4d1a","#f5f4f0","#3b5bff","#0a0a30"].map((c, i) => (
+                  <div key={i} style={{ flex: 1, height: 10, borderRadius: 2, background: c, border: "1px solid rgba(255,255,255,0.08)" }} />
+                ))}
+              </div>
+              <div style={{ background: "rgba(255,255,255,0.04)", borderRadius: 3, padding: "2px 4px" }}>
+                <div style={{ fontFamily: "'DM Serif Display',serif", fontSize: "0.65rem", color: "rgba(245,244,240,0.9)", lineHeight: 1.2 }}>Aa</div>
+                <div style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "0.38rem", color: "rgba(245,244,240,0.35)", letterSpacing: "0.06em" }}>Brand typeface</div>
+              </div>
+            </div>
+          </span>
+          {" "}bold identities &{" "}
+          <span className="stage-card" style={{ width: 118, background: "#0a1a0a" }}>
+            <div className="stage-card-header">
+              <div className="stage-card-dot" style={{ background: "#22c55e" }} />
+              <span className="stage-card-title">LAUNCH</span>
+            </div>
+            <div className="stage-card-body">
+              <svg viewBox="0 0 100 30" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ width: "100%", display: "block" }}>
+                <polygon points="4,26 20,22 36,18 52,11 68,7 84,3 96,1 96,28 4,28" fill="rgba(34,197,94,0.1)" />
+                <polyline points="4,26 20,22 36,18 52,11 68,7 84,3 96,1" stroke="#22c55e" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                <circle cx="96" cy="1" r="2.5" fill="#22c55e" />
+              </svg>
+              <div style={{ display: "flex", justifyContent: "space-between", marginTop: 3 }}>
+                <span style={{ fontFamily: "'DM Sans',sans-serif", fontSize: "0.42rem", color: "rgba(245,244,240,0.4)" }}>Revenue growth</span>
+                <span style={{ fontFamily: "'Syne',sans-serif", fontSize: "0.46rem", fontWeight: 700, color: "#22c55e" }}>+214%</span>
+              </div>
+            </div>
+          </span>
+          {" "}your <em>brand</em>.
+        </h2>
 
-        <div className="approach-body">
-          <strong>Our strategies are designed to challenge the status quo, drive real impact, and unlock new growth opportunities.</strong> If you're ready to redefine your brand and dominate the market, we're here to make it happen. We refuse to settle for the ordinary, thus we partner with innovators and bold entrepreneurs.
-        </div>
-
-        <div className="approach-circle-wrap">
-          <div className="approach-circle">
-            <div className="dot-accent dot-l" />
-            <div className="dot-accent dot-r" />
-            <div className="dot-accent dot-t" />
-            <div className="circle-inner">
-              <span className="circle-icon">📦</span>
-              <div className="circle-title">Innovation</div>
-              <p className="circle-text">We use creative, unconventional solutions to help brands stand out, backed by analytics that measure impact and refine performance</p>
+        {/* Body text */}
+        <div className="approach-bottom">
+          <div>
+            <div className="approach-body">
+              <strong>Our strategies are designed to challenge the status quo, drive real impact, and unlock new growth opportunities.</strong> If you're ready to redefine your brand and dominate the market, we're here to make it happen. We refuse to settle for the ordinary, thus we partner with innovators and bold entrepreneurs.
             </div>
           </div>
         </div>
