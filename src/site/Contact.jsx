@@ -3,12 +3,27 @@ import { budgets, services } from "./data";
 
 const toTitle = (s) => s.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
 
+// Bottom-centre "island". It steps aside while a section's own big CTA is on screen so they don't overlap.
 export function FloatingContact({ onOpen, hidden }) {
+  const [ctaVisible, setCtaVisible] = useState(false);
+
+  useEffect(() => {
+    const targets = document.querySelectorAll(".showcase-actions, .footer-cta");
+    const visible = new Set();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => (e.isIntersecting ? visible.add(e.target) : visible.delete(e.target)));
+      setCtaVisible(visible.size > 0);
+    });
+    targets.forEach((t) => io.observe(t));
+    return () => io.disconnect();
+  }, []);
+
   return (
-    <button className={`float-contact${hidden ? " is-hidden" : ""}`} onClick={() => onOpen()}>
+    <button className={`float-contact${hidden || ctaVisible ? " is-hidden" : ""}`} onClick={() => onOpen()}>
       <span className="live-dot" />
       <span className="float-contact-label">Let's talk</span>
-      <span className="float-contact-extra">start a project →</span>
+      <span className="float-contact-extra">Start a project · replies in 24h</span>
+      <span className="float-contact-go" aria-hidden="true">↗</span>
     </button>
   );
 }

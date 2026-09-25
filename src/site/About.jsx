@@ -1,5 +1,5 @@
-import { useCallback, useRef } from "react";
-import { useContact, useScrollFrame } from "./hooks";
+import { useContact } from "./hooks";
+import ScrollStatement from "./ScrollStatement";
 
 // Big statement, one entry per word; `accent` words render in the serif italic.
 const statement = [
@@ -14,22 +14,10 @@ const stats = [
 ];
 
 export default function About() {
-  const ref = useRef(null);
-  const textRef = useRef(null);
   const { open: openContact } = useContact();
 
-  // Words fill in as the statement scrolls from the bottom of the viewport to the upper third.
-  const onFrame = useCallback((_, vh) => {
-    const el = textRef.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    const p = (vh * 0.9 - r.top) / (r.height + vh * 0.35);
-    el.style.setProperty("--p", Math.min(1, Math.max(0, p)).toFixed(4));
-  }, []);
-  useScrollFrame(ref, onFrame);
-
   return (
-    <section className="about" id="about" ref={ref}>
+    <section className="about" id="about">
       <div className="about-rail about-rail-l" />
       <div className="about-rail about-rail-r" />
 
@@ -38,17 +26,7 @@ export default function About() {
         <span className="about-tag">01 — Who we are</span>
       </div>
 
-      <h2 className="about-statement" ref={textRef} style={{ "--n": statement.length }}>
-        {statement.map((w, i) => {
-          const word = typeof w === "string" ? w : w.word;
-          return (
-            <span key={i} className={`about-word${w.accent ? " accent" : ""}`} style={{ "--i": i }}>
-              {word}{" "}
-            </span>
-          );
-        })}
-      </h2>
-
+      <ScrollStatement items={statement} className="about-statement" />
       <div className="about-bottom">
         <p className="about-copy">
           We're a brand and growth studio for founders and teams who refuse to blend in. Strategy, design and marketing under one roof,
