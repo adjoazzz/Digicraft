@@ -145,35 +145,36 @@ export default function Effect() {
   return (
     <section className="effect" ref={ref} style={{ "--steps": n }}>
       <div className="effect-sticky">
-        <div className="effect-left">
-          <span className="eyebrow">The Digicraft effect</span>
-          <h2 className="effect-title">What happens when brands <em>partner</em> with us</h2>
-          <div className="effect-list">
-            {effectItems.map((item, i) => (
-              <button
-                key={item.id}
-                className={`effect-row${i === active ? " is-active" : ""}${i < active ? " is-done" : ""}`}
-                onClick={() => goTo(i)}
-              >
-                <span className="effect-row-bar">
-                  <i style={{ transform: `scaleY(${i < active ? 1 : i === active ? local : 0})` }} />
-                </span>
-                <span className="effect-row-main">
-                  <span className="effect-row-head">
-                    <span className="effect-row-num">{item.id}</span>
-                    <span className="effect-row-name">{item.title}</span>
-                  </span>
-                  <span className="effect-row-body">
-                    <span className="effect-row-desc">{item.desc}</span>
-                  </span>
-                </span>
-              </button>
-            ))}
+        {/* Row 1: title + primary CTA */}
+        <header className="effect-head">
+          <div>
+            <span className="eyebrow">The Digicraft effect</span>
+            <h2 className="effect-title">What happens when brands <em>partner</em> with us</h2>
           </div>
-        </div>
+          <button className="btn btn-orange btn-lg" onClick={() => openContact()}>
+            Start a project <span className="arrow">↗</span>
+          </button>
+        </header>
 
-        <div className="effect-right">
-          <div className="effect-stage">
+        {/* Row 2: the active outcome as a big statement, with its animated scene edge to edge on the right */}
+        <div className="effect-body">
+          <div className="effect-copy">
+            <div className="effect-copy-inner" key={active}>
+              <span className="effect-kicker">{current.id} — {current.title}</span>
+              <p className="effect-headline">{current.desc}</p>
+              <p className="effect-stat"><b>{current.stat}</b> {current.statLabel}</p>
+            </div>
+            <div className="effect-progress">
+              {effectItems.map((item, i) => (
+                <button key={item.id} className={`effect-step${i === active ? " is-active" : ""}`} onClick={() => goTo(i)} aria-label={item.title}>
+                  <i style={{ transform: `scaleX(${i < active ? 1 : i === active ? local : 0})` }} />
+                  <span>{item.id}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="effect-visual">
             {effectItems.map((item, i) => {
               const Scene = scenes[item.scene];
               const state = i === active ? "is-active" : i < active ? "is-past" : "is-next";
@@ -183,18 +184,6 @@ export default function Effect() {
                 </div>
               );
             })}
-            <div className="stat-badge" key={active}>
-              <span className="stat-num">{current.stat}</span>
-              <span className="stat-label">{current.statLabel}</span>
-            </div>
-          </div>
-          <div className="effect-foot">
-            <span className="effect-count">
-              <b>{String(active + 1).padStart(2, "0")}</b> / {String(n).padStart(2, "0")} outcomes
-            </span>
-            <button className="btn btn-light" onClick={() => openContact()}>
-              Start a project <span className="arrow">↗</span>
-            </button>
           </div>
         </div>
       </div>
