@@ -23,7 +23,6 @@
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --gutter: 5vw;
-  --radius-btn: 4px; /* all buttons are squared-off rectangles */
   color-scheme: dark;
 }
 
@@ -102,7 +101,7 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   gap: 0.5rem;
   padding: 0.8rem 1.5rem;
-  border-radius: var(--radius-btn);
+  border-radius: 100px;
   font-family: var(--font-head);
   font-weight: 600;
   font-size: 0.85rem;
@@ -230,7 +229,7 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   width: 34px;
   height: 34px;
-  border-radius: var(--radius-btn);
+  border-radius: 50%;
   border: 1px solid var(--line);
   transition: background 0.25s, border-color 0.25s, transform 0.4s var(--ease-out);
 }
@@ -754,7 +753,7 @@ a { color: inherit; text-decoration: none; }
   margin-top: auto;
   display: inline-flex; align-items: center; gap: 0.5rem;
   padding: 0.75rem 1.4rem;
-  border-radius: var(--radius-btn);
+  border-radius: 100px;
   background: #fff8ec;
   color: var(--ink);
   border: 1.5px solid var(--ink);
@@ -1037,7 +1036,7 @@ a { color: inherit; text-decoration: none; }
 .notch-bubble-link:hover { text-decoration: underline; }
 .notch-bubble-close {
   position: absolute; top: 0.45rem; right: 0.55rem;
-  width: 22px; height: 22px; border-radius: var(--radius-btn);
+  width: 22px; height: 22px; border-radius: 50%;
   color: #9a9aab; font-size: 1rem; line-height: 1;
 }
 .notch-bubble-close:hover { background: #f1f1f4; color: var(--ink); }
@@ -1072,7 +1071,7 @@ a { color: inherit; text-decoration: none; }
 .contact-layer.is-open .contact-sheet { opacity: 1; transform: translateX(-50%); }
 .contact-close {
   position: absolute; right: 1rem; top: 1rem;
-  width: 36px; height: 36px; border-radius: var(--radius-btn);
+  width: 36px; height: 36px; border-radius: 50%;
   background: #f1f1f4; font-size: 1.3rem; line-height: 1;
 }
 .contact-close:hover { background: #e4e4ea; }
@@ -1083,7 +1082,7 @@ a { color: inherit; text-decoration: none; }
 .contact-sheet legend { font-family: var(--font-head); font-weight: 600; font-size: 0.8rem; margin-bottom: 0.55rem; }
 .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .chip {
-  padding: 0.45rem 0.85rem; border-radius: var(--radius-btn);
+  padding: 0.45rem 0.85rem; border-radius: 100px;
   border: 1px solid #dcdce4; font-size: 0.8rem; color: #3b3b4d;
   transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.2s var(--ease-spring);
 }
@@ -1094,7 +1093,7 @@ a { color: inherit; text-decoration: none; }
   width: 100%;
   font: inherit; font-size: 0.9rem;
   padding: 0.8rem 0.9rem;
-  border-radius: var(--radius-btn);
+  border-radius: 12px;
   border: 1px solid #dcdce4;
   background: #fafafc;
   color: var(--ink);
@@ -1130,7 +1129,7 @@ a { color: inherit; text-decoration: none; }
 .theme-toggle {
   position: relative;
   width: 60px; height: 32px;
-  border-radius: var(--radius-btn);
+  border-radius: 100px;
   background: var(--glass);
   border: 1px solid var(--glass-border);
   backdrop-filter: blur(10px);
@@ -1138,7 +1137,7 @@ a { color: inherit; text-decoration: none; }
 }
 .theme-toggle-knob {
   position: absolute; top: 3px; left: 3px;
-  width: 24px; height: 24px; border-radius: 2px;
+  width: 24px; height: 24px; border-radius: 50%;
   display: grid; place-items: center;
   background: var(--fg); color: var(--bg);
   transition: transform 0.5s var(--ease-spring), background 0.4s, color 0.4s;
