@@ -53,8 +53,11 @@ export default function Hero() {
   return (
     <section className="hero" id="top">
       <div className="hero-media" aria-hidden="true">
-        <BackgroundVideo className="hero-video" sources={[HERO_VIDEO]} />
-        <div className="hero-overlay" />
+        {/* One screen tall and sticky, so opening a service (which makes the hero taller) never rescales the video */}
+        <div className="hero-stage">
+          <BackgroundVideo className="hero-video" sources={[HERO_VIDEO]} />
+          <div className="hero-overlay" />
+        </div>
       </div>
 
       <nav className="hero-nav fade-up">
