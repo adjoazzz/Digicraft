@@ -53,9 +53,6 @@ export default function Hero() {
   return (
     <section className="hero" id="top">
       <div className="hero-media" aria-hidden="true">
-        <div className="hero-blob" />
-        <div className="hero-blob-2" />
-        <div className="hero-blob-3" />
         <BackgroundVideo className="hero-video" sources={[HERO_VIDEO]} />
         <div className="hero-overlay" />
       </div>
@@ -77,7 +74,6 @@ export default function Hero() {
       </nav>
 
       <div className="hero-content">
-        <p className="hero-kicker fade-up delay-1"><span className="live-dot" /> Brand & growth studio · Taking new projects</p>
         <h1 className="hero-title fade-up delay-2">
           We create bold ideas that <em>position brands</em> &amp; <em>drive growth</em>
         </h1>
