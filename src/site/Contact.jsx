@@ -1,15 +1,54 @@
 import { useEffect, useRef, useState } from "react";
 import { budgets, services } from "./data";
+import EyeLogo from "./EyeLogo";
 
 const toTitle = (s) => s.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
 
+// Notch-style tab attached to the bottom edge of the screen, with a message bubble that pops out of it.
+// It slides away while a section's own big CTA is on screen so they don't overlap.
 export function FloatingContact({ onOpen, hidden }) {
+  const [ctaVisible, setCtaVisible] = useState(false);
+  const [bubble, setBubble] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
+
+  useEffect(() => {
+    const targets = document.querySelectorAll(".showcase-actions, .footer-cta, .footer-wordmark");
+    const visible = new Set();
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => (e.isIntersecting ? visible.add(e.target) : visible.delete(e.target)));
+      setCtaVisible(visible.size > 0);
+    });
+    targets.forEach((t) => io.observe(t));
+    return () => io.disconnect();
+  }, []);
+
+  // Nudge once a few seconds in, then tuck the bubble away again.
+  useEffect(() => {
+    const show = setTimeout(() => setBubble(true), 3500);
+    const hide = setTimeout(() => setBubble(false), 12000);
+    return () => { clearTimeout(show); clearTimeout(hide); };
+  }, []);
+
+  const away = hidden || ctaVisible;
+  const showBubble = bubble && !dismissed && !away;
+
   return (
-    <button className={`float-contact${hidden ? " is-hidden" : ""}`} onClick={() => onOpen()}>
-      <span className="live-dot" />
-      <span className="float-contact-label">Let's talk</span>
-      <span className="float-contact-extra">start a project →</span>
-    </button>
+    <div
+      className={`notch${away ? " is-hidden" : ""}`}
+      onMouseEnter={() => !dismissed && setBubble(true)}
+      onMouseLeave={() => setBubble(false)}
+    >
+      <div className={`notch-bubble${showBubble ? " is-shown" : ""}`} role="status">
+        <button className="notch-bubble-close" aria-label="Dismiss" onClick={() => { setDismissed(true); setBubble(false); }}>×</button>
+        <p>Got a brand to build? We reply within one business day.</p>
+        <button className="notch-bubble-link" onClick={() => onOpen()}>Start a project</button>
+      </div>
+      <button className="notch-tab" onClick={() => onOpen()} aria-label="Contact Digicraft">
+        <EyeLogo />
+        <span className="notch-label">Let's talk</span>
+        <span className="live-dot" />
+      </button>
+    </div>
   );
 }
 

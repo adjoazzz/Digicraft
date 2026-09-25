@@ -7,6 +7,7 @@ import Effect from "./site/Effect";
 import CaseStudies from "./site/CaseStudies";
 import Approach from "./site/Approach";
 import Showcase from "./site/Showcase";
+import Footer from "./site/Footer";
 import { ContactSheet, FloatingContact } from "./site/Contact";
 
 export default function AgencySite() {
@@ -24,17 +25,7 @@ export default function AgencySite() {
       <Approach />
       <Showcase />
 
-      <footer className="site-footer">
-        <div className="footer-cta">
-          <h2>Got a brand to build? <em>Let's talk.</em></h2>
-          <button className="btn btn-orange" onClick={() => open()}>Start a project <span className="arrow">→</span></button>
-        </div>
-        <div className="footer-row">
-          <span className="footer-logo">Digicraft</span>
-          <span>© {new Date().getFullYear()} All rights reserved</span>
-          <span>Privacy Policy · Terms</span>
-        </div>
-      </footer>
+      <Footer />
 
       <FloatingContact onOpen={open} hidden={contact.open} />
       <ContactSheet open={contact.open} preset={contact.preset} session={contact.session} onClose={close} />

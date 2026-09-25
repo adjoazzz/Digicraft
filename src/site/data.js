@@ -1,6 +1,8 @@
 // Drop a clip at public/hero.mp4 (e.g. a free Pexels/Mixkit "creative team working" video).
 // If it's missing, the hero falls back to the animated gradient.
 export const HERO_VIDEO = "/hero.mp4";
+// Tall video strip beside the approach statement; falls back to hero.mp4 if this one is missing.
+export const APPROACH_VIDEO = "/approach.mp4";
 
 export const services = [
   {

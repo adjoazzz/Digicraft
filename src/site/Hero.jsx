@@ -2,6 +2,8 @@ import { useState } from "react";
 import { HERO_VIDEO, services } from "./data";
 import { useContact } from "./hooks";
 import ServiceIllustration from "./ServiceIllustrations";
+import EyeLogo from "./EyeLogo";
+import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -70,15 +72,18 @@ export default function Hero() {
 
       <nav className="hero-nav fade-up">
         <a className="logo" href="#top">
-          <img src="/logo.png" alt="" />
+          <EyeLogo />
           Digicraft
         </a>
         <div className="hero-links">
           {navLinks.map((l) => <a key={l.label} href={l.href}>{l.label}</a>)}
         </div>
-        <button className="btn btn-light" onClick={() => openContact()}>
-          Get in touch
-        </button>
+        <div className="hero-nav-actions">
+          <ThemeToggle />
+          <button className="btn btn-light" onClick={() => openContact()}>
+            Get in touch
+          </button>
+        </div>
       </nav>
 
       <div className="hero-content">
