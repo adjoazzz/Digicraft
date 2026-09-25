@@ -36,6 +36,18 @@
   --glass-border: rgba(11, 11, 31, 0.1);
   color-scheme: light;
 }
+/* The hero sits on video, so it keeps the dark palette in both themes. */
+.hero {
+  --bg: #050510;
+  --fg: #f5f4f0;
+  --glass: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --dim: color-mix(in srgb, var(--fg) 55%, transparent);
+  --faint: color-mix(in srgb, var(--fg) 38%, transparent);
+  --line: color-mix(in srgb, var(--fg) 10%, transparent);
+  color: var(--fg);
+  color-scheme: dark;
+}
 body, .about, .approach, .work, .showcase, .site-footer, .hero-media {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
@@ -129,7 +141,8 @@ a { color: inherit; text-decoration: none; }
   flex-direction: column;
   isolation: isolate;
 }
-.hero-media { position: absolute; inset: 0; z-index: -1; overflow: hidden; background: var(--bg); }
+.hero-media { position: absolute; inset: 0; z-index: -1; overflow: clip; background: var(--bg); }
+.hero-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; }
 .hero-video {
   position: absolute;
   inset: 0;
@@ -244,7 +257,10 @@ a { color: inherit; text-decoration: none; }
 .service-panel {
   position: relative;
   margin: 0 0 1.4rem;
-  background: var(--paper);
+  background: rgba(255, 255, 255, 0.72);
+  -webkit-backdrop-filter: blur(22px) saturate(1.4);
+  backdrop-filter: blur(22px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.55);
   color: var(--ink);
   border-radius: 20px;
   padding: 2.2rem 2.2rem 2.2rem 230px;
@@ -286,7 +302,7 @@ a { color: inherit; text-decoration: none; }
   margin: 0.7rem 0 0.8rem;
   max-width: 30ch;
 }
-.service-panel-text { font-size: 0.92rem; line-height: 1.65; color: #4a4a5c; max-width: 58ch; }
+.service-panel-text { font-size: 0.92rem; line-height: 1.65; color: #33334a; max-width: 58ch; }
 .service-deliverables {
   list-style: none;
   display: grid;
@@ -311,7 +327,7 @@ a { color: inherit; text-decoration: none; }
   flex-wrap: wrap;
   gap: 1rem;
   padding-top: 1.2rem;
-  border-top: 1px solid #ececf0;
+  border-top: 1px solid rgba(11, 11, 31, 0.1);
 }
 .service-timeline { font-size: 0.8rem; color: #6b6b7b; }
 
@@ -877,36 +893,6 @@ a { color: inherit; text-decoration: none; }
   background: rgba(0, 0, 0, 0.55); backdrop-filter: blur(8px);
   color: #fff; font-size: 0.7rem; font-weight: 500; white-space: nowrap;
 }
-.stage-card {
-  border-color: rgba(255,255,255,0.1);
-  display: inline-flex; flex-direction: column; vertical-align: middle;
-  width: 150px; position: relative; top: -0.06em;
-  border-radius: 12px; overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 14px 30px -10px rgba(11,11,31,0.55);
-  font-size: 16px; line-height: 1; letter-spacing: 0; text-transform: none; white-space: normal;
-  color: var(--white);
-  animation: floatCard 4s ease-in-out infinite;
-  transition: rotate 0.35s var(--ease-spring);
-}
-.statement-card:nth-of-type(3n) .stage-card { animation-delay: 0.8s; }
-.statement-card:nth-of-type(3n+1) .stage-card { animation-delay: 1.6s; }
-.stage-card:hover { rotate: 5deg; }
-@keyframes floatCard { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-.stage-card-header { display: flex; align-items: center; gap: 0.4rem; padding: 0.5rem 0.7rem 0.35rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
-.stage-card-dot { width: 6px; height: 6px; border-radius: 50%; }
-.stage-card-title { font-family: var(--font-head); font-size: 0.55rem; font-weight: 700; letter-spacing: 0.12em; color: rgba(245,244,240,0.9); }
-.stage-card-body { display: block; padding: 0.5rem 0.7rem 0.6rem; }
-.stage-card-body > svg { display: block; width: 100%; }
-.stage-bars { display: flex; align-items: flex-end; gap: 2px; height: 24px; }
-.stage-bars i { flex: 1; background: var(--blue); border-radius: 2px 2px 0 0; }
-.stage-metric { display: flex; justify-content: space-between; margin-top: 5px; font-size: 0.45rem; color: rgba(245,244,240,0.45); font-family: var(--font-body); }
-.stage-metric b { font-family: var(--font-head); font-size: 0.5rem; }
-.stage-swatches { display: flex; gap: 2px; margin-bottom: 4px; }
-.stage-swatches i { flex: 1; height: 10px; border-radius: 2px; border: 1px solid rgba(255,255,255,0.08); }
-.stage-type { display: block; background: rgba(255,255,255,0.04); border-radius: 3px; padding: 3px 4px; }
-.stage-type b { display: block; font-family: var(--font-accent); font-style: italic; font-weight: 400; font-size: 1rem; color: rgba(245,244,240,0.9); }
-.stage-type small { font-size: 0.4rem; color: rgba(245,244,240,0.4); letter-spacing: 0.06em; }
 
 /* ---------- SHOWCASE (orbiting cards) ---------- */
 .showcase {
@@ -917,7 +903,7 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
   border-top: 1px solid var(--line);
   padding: 6rem var(--gutter);
-  background: radial-gradient(ellipse at 50% 55%, rgba(26, 58, 255, 0.16) 0%, transparent 60%), var(--bg);
+  background: var(--bg);
 }
 .orbit-card {
   position: absolute;
@@ -1178,11 +1164,8 @@ a { color: inherit; text-decoration: none; }
 .footer-letter span {
   --lit: clamp(0, calc(var(--p) * 1.6 - var(--i) / var(--n) * 0.6), 1);
   display: block;
-  transform: translateY(calc((1 - var(--lit)) * 105%)) rotate(calc((1 - var(--lit)) * 8deg));
-  background: linear-gradient(180deg, var(--fg) 20%, color-mix(in srgb, var(--fg) 20%, var(--blue)) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  transform: translateY(calc((1 - var(--lit)) * 105%));
+  color: var(--fg);
 }
 
 /* ---------- RESPONSIVE ---------- */
@@ -1218,7 +1201,6 @@ a { color: inherit; text-decoration: none; }
   .approach { grid-template-columns: 1fr; }
   .approach-video-inner { position: relative; height: 55vh; }
   .approach-video-fallback { writing-mode: horizontal-tb; }
-  .stage-card { width: 110px; }
 
   .bento-card:nth-child(n) { grid-column: span 6; min-height: 480px; }
   .bento-card { padding: 1.8rem; }
