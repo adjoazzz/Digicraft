@@ -40,7 +40,7 @@ export default function About() {
             </div>
           ))}
         </div>
-        <button className="btn btn-ink about-btn" onClick={() => openContact()}>
+        <button className="btn btn-inv about-btn" onClick={() => openContact()}>
           Work with us <span className="arrow">→</span>
         </button>
       </div>

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { budgets, services } from "./data";
+import EyeLogo from "./EyeLogo";
 
 const toTitle = (s) => s.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
 
@@ -11,7 +12,7 @@ export function FloatingContact({ onOpen, hidden }) {
   const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
-    const targets = document.querySelectorAll(".showcase-actions, .footer-cta");
+    const targets = document.querySelectorAll(".showcase-actions, .footer-cta, .footer-wordmark");
     const visible = new Set();
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e) => (e.isIntersecting ? visible.add(e.target) : visible.delete(e.target)));
@@ -43,7 +44,7 @@ export function FloatingContact({ onOpen, hidden }) {
         <button className="notch-bubble-link" onClick={() => onOpen()}>Start a project</button>
       </div>
       <button className="notch-tab" onClick={() => onOpen()} aria-label="Contact Digicraft">
-        <img src="/logo.png" alt="" />
+        <EyeLogo />
         <span className="notch-label">Let's talk</span>
         <span className="live-dot" />
       </button>

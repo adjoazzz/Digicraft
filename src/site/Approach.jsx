@@ -86,7 +86,7 @@ export default function Approach() {
             <strong>Our strategies are designed to challenge the status quo, drive real impact, and unlock new growth opportunities.</strong>{" "}
             If you're ready to redefine your brand and dominate the market, we're here to make it happen.
           </p>
-          <button className="btn btn-ink" onClick={() => openContact()}>
+          <button className="btn btn-inv" onClick={() => openContact()}>
             See how we'd approach your brand <span className="arrow">→</span>
           </button>
         </div>
