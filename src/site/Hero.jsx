@@ -34,7 +34,7 @@ function ServiceRow({ service, open, onToggle }) {
               </ul>
               <div className="service-panel-foot">
                 <span className="service-timeline">Typical timeline · {service.timeline}</span>
-                <button className="btn btn-ink" onClick={() => openContact(service.name)}>
+                <button className="btn btn-light" onClick={() => openContact(service.name)}>
                   Discuss this service <span className="arrow">→</span>
                 </button>
               </div>
