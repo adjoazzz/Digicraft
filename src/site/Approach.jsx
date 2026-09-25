@@ -1,7 +1,7 @@
-import { useState } from "react";
 import { APPROACH_VIDEO, HERO_VIDEO } from "./data";
 import { useContact } from "./hooks";
 import ScrollStatement from "./ScrollStatement";
+import BackgroundVideo from "./BackgroundVideo";
 
 const StageCard = ({ title, dot, bg, children }) => (
   <span className="stage-card" style={{ background: bg }}>
@@ -66,7 +66,6 @@ const statement = [
 ];
 
 export default function Approach() {
-  const [videoReady, setVideoReady] = useState(false);
   const { open: openContact } = useContact();
 
   return (
@@ -99,18 +98,7 @@ export default function Approach() {
             <span className="live-dot" />
             <span>Inside the studio</span>
           </div>
-          <video
-            className={videoReady ? "is-ready" : ""}
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-            onCanPlay={() => setVideoReady(true)}
-          >
-            <source src={APPROACH_VIDEO} type="video/mp4" />
-            <source src={HERO_VIDEO} type="video/mp4" />
-          </video>
+          <BackgroundVideo sources={[APPROACH_VIDEO, HERO_VIDEO]} />
           <span className="approach-video-tag">● Live from the studio</span>
         </div>
       </aside>

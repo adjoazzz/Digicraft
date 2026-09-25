@@ -4,6 +4,7 @@ import { useContact } from "./hooks";
 import ServiceIllustration from "./ServiceIllustrations";
 import EyeLogo from "./EyeLogo";
 import ThemeToggle from "./ThemeToggle";
+import BackgroundVideo from "./BackgroundVideo";
 
 const navLinks = [
   { label: "Services", href: "#services" },
@@ -47,7 +48,6 @@ function ServiceRow({ service, open, onToggle }) {
 
 export default function Hero() {
   const [openService, setOpenService] = useState(null);
-  const [videoReady, setVideoReady] = useState(false);
   const { open: openContact } = useContact();
 
   return (
@@ -56,17 +56,7 @@ export default function Hero() {
         <div className="hero-blob" />
         <div className="hero-blob-2" />
         <div className="hero-blob-3" />
-        <video
-          className={`hero-video${videoReady ? " is-ready" : ""}`}
-          autoPlay
-          muted
-          loop
-          playsInline
-          preload="auto"
-          onCanPlay={() => setVideoReady(true)}
-        >
-          <source src={HERO_VIDEO} type="video/mp4" />
-        </video>
+        <BackgroundVideo className="hero-video" sources={[HERO_VIDEO]} />
         <div className="hero-overlay" />
       </div>
 
