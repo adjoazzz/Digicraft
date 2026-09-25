@@ -86,15 +86,15 @@ function ContactForm({ preset, autoFocus, onClose }) {
           </div>
         </fieldset>
 
-            <div className="contact-fields">
-              <input ref={firstField} required name="name" placeholder="Your name" autoComplete="name" />
-              <input required type="email" name="email" placeholder="Work email" autoComplete="email" />
-            </div>
-            <textarea name="message" rows="3" placeholder="Tell us about your brand and goals (optional)" />
+        <div className="contact-fields">
+          <input ref={firstField} required name="name" placeholder="Your name" autoComplete="name" />
+          <input required type="email" name="email" placeholder="Work email" autoComplete="email" />
+        </div>
+        <textarea name="message" rows="3" placeholder="Tell us about your brand and goals (optional)" />
 
-            <button type="submit" className="btn btn-orange contact-submit">
-              Send enquiry <span className="arrow">→</span>
-            </button>
-          </form>
+        <button type="submit" className="btn btn-orange contact-submit">
+          Send enquiry <span className="arrow">→</span>
+        </button>
+      </form>
   );
 }
