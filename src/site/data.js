@@ -68,7 +68,7 @@ export const effectItems = [
     desc: "A bold, distinctive visual language that turns heads and builds instant recognition across every touchpoint.",
     stat: "+340%",
     statLabel: "Brand recall lift",
-    scene: "identity",
+    video: "/effect-1.mp4",
   },
   {
     id: "02",
@@ -76,7 +76,7 @@ export const effectItems = [
     desc: "Carve out the category you own. We find the white space and plant your flag before competitors know it exists.",
     stat: "2.4×",
     statLabel: "Faster market penetration",
-    scene: "positioning",
+    video: "/effect-2.mp4",
   },
   {
     id: "03",
@@ -84,7 +84,7 @@ export const effectItems = [
     desc: "Community-first strategies that compound, turning customers into advocates who do the marketing for you.",
     stat: "+180%",
     statLabel: "Organic audience growth",
-    scene: "audience",
+    video: "/effect-3.mp4",
   },
   {
     id: "04",
@@ -92,7 +92,7 @@ export const effectItems = [
     desc: "Every creative decision ties back to a commercial outcome. Strategy and execution aligned to your growth targets.",
     stat: "3.1×",
     statLabel: "Average ROI on campaigns",
-    scene: "revenue",
+    video: "/effect-4.mp4",
   },
 ];
 
