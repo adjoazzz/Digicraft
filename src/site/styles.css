@@ -7,11 +7,12 @@
   --white: #f5f4f0;
   --paper: #ffffff;
   /* Theme tokens (dark default). --fg/--bg drive the main sections;
-     --inv-* drive the contrasting statement sections (About, Approach). */
+     --inv-* drive the statement sections (About, Approach), which follow the theme
+     in a slightly different shade so they read as their own sections. */
   --fg: #f5f4f0;
-  --inv-bg: #f5f4f0;
-  --inv-fg: #0b0b1f;
-  --inv-muted: #4a4a5c;
+  --inv-bg: #0b0b1f;
+  --inv-fg: #f5f4f0;
+  --inv-muted: rgba(245, 244, 240, 0.65);
   --glass: rgba(255, 255, 255, 0.07);
   --glass-border: rgba(255, 255, 255, 0.12);
   --dim: color-mix(in srgb, var(--fg) 55%, transparent);
@@ -29,9 +30,9 @@
 [data-theme="light"] {
   --bg: #f6f5f1;
   --fg: #0b0b1f;
-  --inv-bg: #0b0b1f;
-  --inv-fg: #f5f4f0;
-  --inv-muted: rgba(245, 244, 240, 0.65);
+  --inv-bg: #fbfaf7;
+  --inv-fg: #0b0b1f;
+  --inv-muted: #4a4a5c;
   --glass: rgba(255, 255, 255, 0.6);
   --glass-border: rgba(11, 11, 31, 0.1);
   color-scheme: light;
