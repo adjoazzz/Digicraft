@@ -36,6 +36,18 @@
   --glass-border: rgba(11, 11, 31, 0.1);
   color-scheme: light;
 }
+/* The hero sits on video, so it keeps the dark palette in both themes. */
+.hero {
+  --bg: #050510;
+  --fg: #f5f4f0;
+  --glass: rgba(255, 255, 255, 0.07);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --dim: color-mix(in srgb, var(--fg) 55%, transparent);
+  --faint: color-mix(in srgb, var(--fg) 38%, transparent);
+  --line: color-mix(in srgb, var(--fg) 10%, transparent);
+  color: var(--fg);
+  color-scheme: dark;
+}
 body, .about, .approach, .work, .showcase, .site-footer, .hero-media {
   transition: background-color 0.5s ease, color 0.5s ease;
 }
