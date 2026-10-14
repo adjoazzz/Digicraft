@@ -65,17 +65,8 @@ export default function CaseStudies() {
           <Pill>view campaign</Pill>
         </article>
 
-        <article className="bento-card bento-tall tone-ink" style={{ "--i": 4 }}>
-          <h3 className="bento-headline center">The battle is on.</h3>
-          <div className="frame">
-            <img src="/work/asaase-sound-clash.jpg" alt="Asaase Sound Clash event poster" loading="lazy" />
-          </div>
-          <p className="bento-caption">Asaase Sound Clash · Event promotion</p>
-          <Pill>view campaign</Pill>
-        </article>
-
         {/* Last card */}
-        <article className="bento-card tone-cream cta-card" style={{ "--i": 5 }}>
+        <article className="bento-card bento-tall tone-cream" style={{ "--i": 4 }}>
           <h3 className="bento-headline center dark">Could your brand be next?</h3>
           <p className="bento-text center dark">Tell us where you want to go. We'll show you how we'd get you there, no strings attached.</p>
           <div className="packs">
