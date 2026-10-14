@@ -81,8 +81,9 @@ export default function CaseStudies() {
           <p className="bento-text center dark">Tell us where you want to go. We'll show you how we'd get you there, no strings attached.</p>
           <div className="packs">
             {[["#1a3aff", "Brand"], ["#ff4d1a", "Launch"], ["#0b0b1f", "Growth"], ["#3b5bff", "Scale"]].map(([c, t], i) => (
-              <div key={t} className="pack" style={{ "--c": c, "--r": `${(i - 1.5) * 9}deg`, "--y": `${Math.abs(i - 1.5) * 10}px` }}>
+              <div key={t} className="pack" style={{ "--c": c, zIndex: i + 1 }}>
                 <span>{t}</span>
+                <small>0{i + 1}</small>
               </div>
             ))}
           </div>

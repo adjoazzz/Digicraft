@@ -647,20 +647,23 @@ a { color: inherit; text-decoration: none; }
 .butter .pill:hover { transform: translateX(-50%) translateY(-2px); }
 
 /* Cream CTA packs */
-.packs { flex: 1; display: flex; justify-content: center; align-items: center; padding: 1rem 0; }
+.packs { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 1.2rem 0; }
 .pack {
-  width: 86px; height: 118px; margin: 0 -10px;
-  border-radius: 10px 10px 14px 14px;
+  position: relative;
+  height: 120px;
+  margin-top: -58px;
+  padding: 1rem 1.4rem;
+  border-radius: 26px;
   background: var(--c); color: #fff;
   border: 2px solid var(--ink);
-  display: grid; place-items: center;
-  font-family: var(--font-head); font-weight: 700; font-size: 0.85rem;
-  rotate: var(--r);
-  translate: 0 var(--y);
-  box-shadow: 0 12px 20px -10px rgba(0,0,0,0.35);
-  transition: translate 0.5s var(--ease-spring), rotate 0.5s var(--ease-spring);
+  display: flex; justify-content: space-between; align-items: flex-start;
+  font-family: var(--font-head); font-weight: 700; font-size: 1.25rem;
+  box-shadow: 0 -6px 18px -10px rgba(0, 0, 0, 0.35);
+  transition: margin-top 0.5s var(--ease-spring);
 }
-.tone-cream:hover .pack { translate: 0 calc(var(--y) - 14px); rotate: calc(var(--r) * 1.4); }
+.pack:first-child { margin-top: 0; }
+.pack small { font-size: 0.8rem; font-weight: 500; opacity: 0.7; padding-top: 0.25rem; }
+.tone-cream:hover .pack:not(:first-child) { margin-top: -46px; }
 
 /* Campaign images */
 .bento-card.visual-img { padding: 0; background: var(--ink); }
