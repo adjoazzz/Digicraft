@@ -8,30 +8,10 @@ const Pill = ({ children, onClick }) => (
 );
 
 const work = [
-  {
-    img: "/work/be-a-gee.jpg",
-    alt: "Be a GEE campaign artwork with two characters pointing at the viewer",
-    name: "Be a GEE!",
-    tag: "Campaign launch · Key visual",
-  },
-  {
-    img: "/work/cbg-mobile.jpg",
-    alt: "CBG Mobile banking campaign artwork with phones on a red background",
-    name: "CBG Mobile",
-    tag: "Mobile banking · Campaign design",
-  },
-  {
-    img: "/work/ecofridges.jpg",
-    alt: "Ecofridges campaign artwork about saving on energy bills",
-    name: "Ecofridges",
-    tag: "Go Green · Campaign design",
-  },
-  {
-    img: "/work/asaase-sound-clash.jpg",
-    alt: "Asaase Sound Clash event poster",
-    name: "Asaase Sound Clash",
-    tag: "Event promotion · Key art",
-  },
+  { img: "/work/be-a-gee.jpg", alt: "Be a GEE campaign artwork with two characters pointing at the viewer", name: "Be a GEE!", tag: "Campaign launch · Key visual" },
+  { img: "/work/cbg-mobile.jpg", alt: "CBG Mobile banking campaign artwork with phones on a red background", name: "CBG Mobile", tag: "Mobile banking · Campaign design" },
+  { img: "/work/ecofridges.jpg", alt: "Ecofridges campaign artwork about saving on energy bills", name: "Ecofridges", tag: "Go Green · Campaign design" },
+  { img: "/work/asaase-sound-clash.jpg", alt: "Asaase Sound Clash event poster", name: "Asaase Sound Clash", tag: "Event promotion · Key art" },
 ];
 
 export default function CaseStudies() {
@@ -50,17 +30,52 @@ export default function CaseStudies() {
       </div>
 
       <div className="bento">
-        {work.map((w, i) => (
-          <article key={w.name} className="bento-card bento-visual work-card" style={{ "--i": i }}>
-            <img className="work-img" src={w.img} alt={w.alt} loading="lazy" />
-            <div className="work-caption">
-              <span>{w.name}</span>
-              <span>{w.tag}</span>
-            </div>
-          </article>
-        ))}
+        {/* Row 1 — visual + story */}
+        <article className="bento-card bento-visual estro" style={{ "--i": 0 }}>
+          <div className="estro-scene">
+            <div className="estro-bottle"><span>estro</span></div>
+            <div className="estro-bottle small"><span>estro</span></div>
+            <div className="estro-box"><span>estro<br /><small>eau de parfum</small></span></div>
+          </div>
+          <div className="bento-meta light">
+            <span>Estro</span>
+            <span>Brand Strategy · Packaging</span>
+          </div>
+        </article>
 
-        <article className="bento-card tone-cream work-cta" style={{ "--i": work.length }}>
+        <article className="bento-card bento-story tone-orange" style={{ "--i": 1 }}>
+          <span className="bento-kicker">Estro · Luxury fragrance</span>
+          <h3 className="bento-headline">A fragrance house that finally looks as good as it smells.</h3>
+          <p className="bento-text">We rebuilt Estro's identity and packaging around one idea, "quiet confidence". Launch-month sales beat forecast by 2.6×.</p>
+          <Pill>read the story</Pill>
+        </article>
+
+        {/* Row 2 — three tall cards */}
+        <article className="bento-card bento-tall tone-blue" style={{ "--i": 2 }}>
+          <h3 className="bento-headline center">+212% repeat orders</h3>
+          <div className="bento-logo">ARITHMETIC</div>
+          <p className="bento-caption">Fintech rebrand · Digital marketing</p>
+          <Pill>view case study</Pill>
+        </article>
+
+        <article className="bento-card bento-tall bento-visual butter" style={{ "--i": 3 }}>
+          <div className="phone">
+            <div className="phone-notch" />
+            <div className="phone-post">
+              <div className="phone-user"><i /> butter.co</div>
+              <div className="phone-img"><span>BUTTER</span></div>
+              <div className="phone-actions">♥ 18.4k &nbsp; 💬 1.2k</div>
+            </div>
+            <div className="phone-post ghost" />
+          </div>
+          <div className="bento-meta light">
+            <span>Butter</span>
+            <span>Social campaign · 4.1M reach</span>
+          </div>
+          <Pill>view campaign</Pill>
+        </article>
+
+        <article className="bento-card bento-tall tone-cream" style={{ "--i": 4 }}>
           <h3 className="bento-headline center dark">Could your brand be next?</h3>
           <p className="bento-text center dark">Tell us where you want to go. We'll show you how we'd get you there, no strings attached.</p>
           <div className="packs">
@@ -72,6 +87,18 @@ export default function CaseStudies() {
           </div>
           <Pill onClick={() => openContact()}>start a project</Pill>
         </article>
+      </div>
+
+      <div className="bento work-grid">
+        {work.map((w, i) => (
+          <article key={w.name} className="bento-card bento-visual work-card" style={{ "--i": i }}>
+            <img className="work-img" src={w.img} alt={w.alt} loading="lazy" />
+            <div className="work-caption">
+              <span>{w.name}</span>
+              <span>{w.tag}</span>
+            </div>
+          </article>
+        ))}
       </div>
     </section>
   );
