@@ -37,7 +37,7 @@ export default function CaseStudies() {
           </div>
         </article>
 
-        <article className="bento-card bento-story tone-yellow" style={{ "--i": 1 }}>
+        <article className="bento-card bento-story tone-blue" style={{ "--i": 1 }}>
           <span className="bento-kicker">Be a GEE · Campaign launch</span>
           <h3 className="bento-headline">A campaign that makes everyone want in.</h3>
           <p className="bento-text">Two larger-than-life characters, one bold invitation and a short code to dial. We built the key visual to be simple to read and impossible to scroll past.</p>
