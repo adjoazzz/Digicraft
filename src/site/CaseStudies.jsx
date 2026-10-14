@@ -7,13 +7,6 @@ const Pill = ({ children, onClick }) => (
   </button>
 );
 
-const work = [
-  { img: "/work/be-a-gee.jpg", alt: "Be a GEE campaign artwork with two characters pointing at the viewer", name: "Be a GEE!", tag: "Campaign launch · Key visual" },
-  { img: "/work/cbg-mobile.jpg", alt: "CBG Mobile banking campaign artwork with phones on a red background", name: "CBG Mobile", tag: "Mobile banking · Campaign design" },
-  { img: "/work/ecofridges.jpg", alt: "Ecofridges campaign artwork about saving on energy bills", name: "Ecofridges", tag: "Go Green · Campaign design" },
-  { img: "/work/asaase-sound-clash.jpg", alt: "Asaase Sound Clash event poster", name: "Asaase Sound Clash", tag: "Event promotion · Key art" },
-];
-
 export default function CaseStudies() {
   const ref = useRef(null);
   const inView = useInView(ref, { threshold: 0.1 });
@@ -31,51 +24,58 @@ export default function CaseStudies() {
 
       <div className="bento">
         {/* Row 1 — visual + story */}
-        <article className="bento-card bento-visual estro" style={{ "--i": 0 }}>
-          <div className="estro-scene">
-            <div className="estro-bottle"><span>estro</span></div>
-            <div className="estro-bottle small"><span>estro</span></div>
-            <div className="estro-box"><span>estro<br /><small>eau de parfum</small></span></div>
-          </div>
+        <article className="bento-card bento-visual visual-img" style={{ "--i": 0 }}>
+          <img
+            className="work-img"
+            src="/work/be-a-gee.jpg"
+            alt="Be a GEE campaign artwork with two characters pointing at the viewer"
+            loading="lazy"
+          />
           <div className="bento-meta light">
-            <span>Estro</span>
-            <span>Brand Strategy · Packaging</span>
+            <span>Be a GEE!</span>
+            <span>Campaign launch · Key visual</span>
           </div>
         </article>
 
         <article className="bento-card bento-story tone-orange" style={{ "--i": 1 }}>
-          <span className="bento-kicker">Estro · Luxury fragrance</span>
-          <h3 className="bento-headline">A fragrance house that finally looks as good as it smells.</h3>
-          <p className="bento-text">We rebuilt Estro's identity and packaging around one idea, "quiet confidence". Launch-month sales beat forecast by 2.6×.</p>
+          <span className="bento-kicker">Be a GEE · Campaign launch</span>
+          <h3 className="bento-headline">A campaign that makes everyone want in.</h3>
+          <p className="bento-text">Two larger-than-life characters, one bold invitation and a short code to dial. We built the key visual to be simple to read and impossible to scroll past.</p>
           <Pill>read the story</Pill>
         </article>
 
         {/* Row 2 — three tall cards */}
         <article className="bento-card bento-tall tone-blue" style={{ "--i": 2 }}>
-          <h3 className="bento-headline center">+212% repeat orders</h3>
-          <div className="bento-logo">ARITHMETIC</div>
-          <p className="bento-caption">Fintech rebrand · Digital marketing</p>
-          <Pill>view case study</Pill>
+          <h3 className="bento-headline center">Banking on the go, made simple.</h3>
+          <div className="frame">
+            <img src="/work/cbg-mobile.jpg" alt="CBG Mobile banking campaign artwork with phones on a red background" loading="lazy" />
+          </div>
+          <p className="bento-caption">CBG Mobile · Mobile banking campaign</p>
+          <Pill>view campaign</Pill>
         </article>
 
-        <article className="bento-card bento-tall bento-visual butter" style={{ "--i": 3 }}>
-          <div className="phone">
-            <div className="phone-notch" />
-            <div className="phone-post">
-              <div className="phone-user"><i /> butter.co</div>
-              <div className="phone-img"><span>BUTTER</span></div>
-              <div className="phone-actions">♥ 18.4k &nbsp; 💬 1.2k</div>
-            </div>
-            <div className="phone-post ghost" />
-          </div>
+        <article className="bento-card bento-tall tone-sunset meta-top" style={{ "--i": 3 }}>
           <div className="bento-meta light">
-            <span>Butter</span>
-            <span>Social campaign · 4.1M reach</span>
+            <span>Ecofridges</span>
+            <span>Go Green · Campaign design</span>
+          </div>
+          <div className="frame tilt">
+            <img src="/work/ecofridges.jpg" alt="Ecofridges campaign artwork about saving on energy bills" loading="lazy" />
           </div>
           <Pill>view campaign</Pill>
         </article>
 
-        <article className="bento-card bento-tall tone-cream" style={{ "--i": 4 }}>
+        <article className="bento-card bento-tall tone-ink" style={{ "--i": 4 }}>
+          <h3 className="bento-headline center">The battle is on.</h3>
+          <div className="frame">
+            <img src="/work/asaase-sound-clash.jpg" alt="Asaase Sound Clash event poster" loading="lazy" />
+          </div>
+          <p className="bento-caption">Asaase Sound Clash · Event promotion</p>
+          <Pill>view campaign</Pill>
+        </article>
+
+        {/* Last card */}
+        <article className="bento-card tone-cream cta-card" style={{ "--i": 5 }}>
           <h3 className="bento-headline center dark">Could your brand be next?</h3>
           <p className="bento-text center dark">Tell us where you want to go. We'll show you how we'd get you there, no strings attached.</p>
           <div className="packs">
@@ -87,18 +87,6 @@ export default function CaseStudies() {
           </div>
           <Pill onClick={() => openContact()}>start a project</Pill>
         </article>
-      </div>
-
-      <div className="bento work-grid">
-        {work.map((w, i) => (
-          <article key={w.name} className="bento-card bento-visual work-card" style={{ "--i": i }}>
-            <img className="work-img" src={w.img} alt={w.alt} loading="lazy" />
-            <div className="work-caption">
-              <span>{w.name}</span>
-              <span>{w.tag}</span>
-            </div>
-          </article>
-        ))}
       </div>
     </section>
   );
