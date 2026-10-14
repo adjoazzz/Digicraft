@@ -7,9 +7,12 @@ import ThemeToggle from "./ThemeToggle";
 import BackgroundVideo from "./BackgroundVideo";
 
 const navLinks = [
+  { label: "Home", href: "#top" },
+  { label: "About Us", href: "#about" },
+  { label: "Team", href: "#about" },
   { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Work", href: "#work" },
+  { label: "Clients", href: "#work" },
+  { label: "Portfolio", href: "#portfolio" },
 ];
 
 function ServiceRow({ service, open, onToggle }) {

@@ -22,7 +22,7 @@ export default function CaseStudies() {
         <p className="work-sub">A few of the teams we've partnered with, from first sketch to measurable growth.</p>
       </div>
 
-      <div className="bento">
+      <div className="bento" id="portfolio">
         {/* Row 1 — visual + story */}
         <article className="bento-card bento-visual visual-img" style={{ "--i": 0 }}>
           <img
