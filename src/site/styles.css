@@ -4,6 +4,8 @@
   --blue: #1a3aff;
   --blue-bright: #3b5bff;
   --orange: #ff4d1a;
+  --logo-blue: #0070b4;
+  --logo-blue-hover: #0a86d1;
   --white: #f5f4f0;
   --paper: #ffffff;
   /* Theme tokens (dark default). --fg/--bg drive the main sections;
@@ -114,9 +116,9 @@ a { color: inherit; text-decoration: none; }
 .btn:hover .arrow, .pill:hover .arrow { transform: translateX(4px); }
 .btn:hover { transform: translateY(-2px); }
 .btn-light { background: var(--fg); color: var(--bg); }
-.btn-light:hover { background: var(--orange); color: #fff; }
-.btn-orange { background: var(--orange); color: #fff; box-shadow: 0 10px 30px -10px rgba(255, 77, 26, 0.7); }
-.btn-orange:hover { background: #ff6a3d; box-shadow: 0 16px 36px -10px rgba(255, 77, 26, 0.8); }
+.btn-light:hover { background: var(--logo-blue); color: #fff; }
+.btn-orange { background: var(--logo-blue); color: #fff; box-shadow: 0 10px 30px -10px rgba(0, 112, 180, 0.7); }
+.btn-orange:hover { background: var(--logo-blue-hover); box-shadow: 0 16px 36px -10px rgba(0, 112, 180, 0.8); }
 .btn-ink { background: var(--ink); color: #fff; }
 .btn-ink:hover { background: var(--blue); }
 .btn-ghost { border: 1px solid var(--glass-border); color: var(--fg); }
@@ -576,13 +578,13 @@ a { color: inherit; text-decoration: none; }
 .pill:hover { transform: translateY(-2px); background: #fff; }
 .pill .arrow { transition: transform 0.25s var(--ease-out); }
 .bento-story .pill { align-self: flex-start; }
-.tone-yellow { background: #d3a02b; color: var(--ink); }
+.tone-yellow { background: #d3a02b; color: #fff; }
 .bento-story.tone-yellow .bento-kicker::before {
   content: ""; display: inline-block; width: 8px; height: 8px; margin-right: 0.6rem;
   border-radius: 50%; background: var(--orange); vertical-align: 0.05em;
 }
-.work .pill { background: var(--blue); border-color: var(--blue); color: #fff; }
-.work .pill:hover { background: var(--blue-bright); border-color: var(--blue-bright); }
+.work .pill { background: var(--logo-blue); border-color: var(--logo-blue); color: #fff; }
+.work .pill:hover { background: var(--logo-blue-hover); border-color: var(--logo-blue-hover); }
 .bento-meta {
   position: absolute; left: 2rem; top: 1.8rem; z-index: 2;
   display: flex; flex-direction: column; gap: 0.2rem;
