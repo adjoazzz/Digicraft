@@ -45,22 +45,32 @@ export default function CaseStudies() {
         </article>
 
         {/* Row 2 — three tall cards */}
-        <article className="bento-card bento-tall tone-blue" style={{ "--i": 2 }}>
-          <h3 className="bento-headline center">Banking on the go, made simple.</h3>
-          <div className="frame">
-            <img src="/work/cbg-mobile.jpg" alt="CBG Mobile banking campaign artwork with phones on a red background" loading="lazy" />
+        <article className="bento-card bento-tall visual-img tall-img" style={{ "--i": 2 }}>
+          <img
+            className="work-img"
+            src="/work/cbg-mobile.jpg"
+            alt="CBG Mobile banking campaign artwork with phones on a red background"
+            style={{ objectPosition: "22% 50%" }}
+            loading="lazy"
+          />
+          <div className="bento-meta light">
+            <span>CBG Mobile</span>
+            <span>Mobile banking · Campaign design</span>
           </div>
-          <p className="bento-caption">CBG Mobile · Mobile banking campaign</p>
           <Pill>view campaign</Pill>
         </article>
 
-        <article className="bento-card bento-tall tone-sunset meta-top" style={{ "--i": 3 }}>
+        <article className="bento-card bento-tall visual-img tall-img" style={{ "--i": 3 }}>
+          <img
+            className="work-img"
+            src="/work/ecofridges.jpg"
+            alt="Ecofridges campaign artwork about saving on energy bills"
+            style={{ objectPosition: "96% 50%" }}
+            loading="lazy"
+          />
           <div className="bento-meta light">
             <span>Ecofridges</span>
             <span>Go Green · Campaign design</span>
-          </div>
-          <div className="frame tilt">
-            <img src="/work/ecofridges.jpg" alt="Ecofridges campaign artwork about saving on energy bills" loading="lazy" />
           </div>
           <Pill>view campaign</Pill>
         </article>
